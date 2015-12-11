@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Manual Backup
+# Manual Backup as root
 # sh /backup/backup.sh >> /backup/logs/`date +"%y-%m-%d"` 2>&1
 
 ###################################################
@@ -16,7 +16,8 @@
 dbName="mydb"
 cfsLoc="/opt/mywebsite/cfs"
 curDate=`date +"%y-%m-%d"`
-cd /backup
+backupLoc="/backup"
+cd backupLoc
 
 # Mongo Backup
 mongodump -d $dbName -o mongo-$curDate
