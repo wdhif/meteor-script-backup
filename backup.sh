@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Manual Backup as root
-# sh /backup/backup.sh >> /backup/logs/`date +"%y-%m-%d"` 2>&1
+# sh /backup/backup.sh >> /backup/logs 2>&1
 
 ###################################################
 #       Manual Restore - USE WITH CAUTION !       #
