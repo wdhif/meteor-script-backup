@@ -14,7 +14,7 @@ Easy backup script for Meteor with MupX (aka Mup with Docker)
   - `backupLoc` is the directory you've created to store your backup.
 4. Set a cron to run the script when you want. EG.
 
-`0 2 * * 0 sh /backup/backup.sh >> /backup/logs 2>&1` for every monday at 2:00 AM.
+  `0 2 * * 0 sh /backup/backup.sh >> /backup/logs 2>&1` for every monday at 2:00 AM.
 
 5. You should REALLY add a SCP or any other way to extract your backup from the server
 
