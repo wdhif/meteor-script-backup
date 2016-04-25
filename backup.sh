@@ -13,18 +13,25 @@
 # rm -r mongo-11-11-11 cfs-11-11-11               #
 ###################################################
 
-dbName="mydb"
+# Container default values are for MupX
+containerName="mongodb"
+containerBackupLoc="/data/db/backup"
+dbName="manager"
 cfsLoc="/opt/mywebsite/cfs"
 curDate=`date +"%y-%m-%d"`
-backupLoc="/backup"
-cd backupLoc
+backupLoc="/backup/backup"
 
 # Mongo Backup
-mongodump -d $dbName -o mongo-$curDate
-tar -zcf mongo-$curDate.tar.gz mongo-$curDate
-rm -r mongo-$curDate
+docker exec -it $containerName mongodump -d $dbName -o $containerBackupLoc/$dbName-$curDate
+echo 'Data extracted from the Docker Container - Compressing...'
+tar -zcf $backupLoc/$dbName-$curDate.tar.gz $backupLoc/$dbName-$curDate
+echo 'Compression complete - Deleting temporary data...'
+# To avoid rm -r / issue, do not use variable below
+rm -r /backup/backup/$dbName-$curDate
 
 # CFS backup
-cp -r $cfsLoc cfs-$curDate
-tar -zcf cfs-$curDate.tar.gz cfs-$curDate
-rm -r cfs-$curDate
+#cp -r $cfsLoc $mydb-$curDate
+#tar -zcf $mydb-$curDate.tar.gz $mydb-$curDate
+#rm -r $mydb-$curDate
+
+# Add here your SCP
