@@ -13,6 +13,8 @@ Easy backup script for Meteor App
 
 `0 2 * * 0 sh /backup/backup.sh >> /backup/logs 2>&1` for every monday at 2:00 AM.
 
+4. You should REALLY add a SCP or any other way to extract your backup from the server
+
 ## Manual Backup
 
 If your backup are store in `/backup`, as **root**, run the following command:
