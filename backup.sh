@@ -21,9 +21,14 @@ cfsLoc="/opt/mywebsite/cfs"
 curDate=`date +"%y-%m-%d"`
 backupLoc="/backup/backup"
 
-# Mongo Backup
+## Mongo Backup ##
+
+# dump db - inside container
 docker exec -it $containerName mongodump -d $dbName -o $containerBackupLoc/$dbName-$curDate
+# copy dump from container to file system
+docker cp mongodb:$containerBackupLoc/$dbName-$curDate $backupLoc
 echo 'Data extracted from the Docker Container - Compressing...'
+# compress
 tar -zcf $backupLoc/$dbName-$curDate.tar.gz $backupLoc/$dbName-$curDate
 echo 'Compression complete - Deleting temporary data...'
 # To avoid rm -r / issue, do not use variable below
