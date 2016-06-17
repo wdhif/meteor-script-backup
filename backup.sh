@@ -22,7 +22,7 @@ curDate=`date +"%y-%m-%d"`
 backupLoc="/backup/backup"
 
 # Mongo Backup
-docker exec -it $containerName mongodump -d $dbName -o $containerBackupLoc/$dbName-$curDate
+docker exec $containerName mongodump -d $dbName -o $containerBackupLoc/$dbName-$curDate
 echo 'Data extracted from the Docker Container - Compressing...'
 tar -zcf $backupLoc/$dbName-$curDate.tar.gz $backupLoc/$dbName-$curDate
 echo 'Compression complete - Deleting temporary data...'
