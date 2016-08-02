@@ -17,7 +17,7 @@ dbName="mydb"
 cfsLoc="/opt/mywebsite/cfs"
 curDate=`date +"%y-%m-%d"`
 backupLoc="/backup"
-cd backupLoc
+cd $backupLoc
 
 # Mongo Backup
 mongodump -d $dbName -o mongo-$curDate
